@@ -22,6 +22,7 @@ class Solution:
             start = end
             end = max_pos + 1
             res += 1
+        print(res)
         return res
 
 # @lc code=end
