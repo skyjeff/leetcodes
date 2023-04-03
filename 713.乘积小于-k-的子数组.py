@@ -10,24 +10,17 @@ from typing import List
 
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        
         n = len(nums)
-        l = 0
-        res = 0
+        l= 0
         sum = 1
-        for i in range(n):
-            if nums[i] < k:
-                res += 1
-            sum *= nums[i]
-            if sum < k:
-                res += 1
-            while sum >= k and l <= i:
+        res = 0
+        for j in range(n):
+            sum *= nums[j]
+            while sum >= k and l <= j:
                 sum //= nums[l]
                 l+=1
-            if sum < k:
-                res += 1
-        return res-1
-            
+            res += j - l + 1
+        return res
 # @lc code=end
-Solution().numSubarrayProductLessThanK([1,5,20,10,5,2],
-10)
+Solution().numSubarrayProductLessThanK([10,5,2,6],
+100)
